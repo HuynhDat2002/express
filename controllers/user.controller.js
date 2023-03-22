@@ -1,17 +1,13 @@
-
-import express from 'express';
-const router = express.Router();
-
+import db from '../db.js';
 import shortId from 'shortid'
-import db from '../db.js'
 
-router.get('/', (request, response) => {
+export const index=(request, response)=>{
     response.render('users/index',{
         users:db.get('users').value()
     });
-});
+}
 
-router.get('/search',(req,res) => {
+export const search=(req,res) => {
     var q=req.query.q;
     var matchedUsers=db.get('users').value().filter(user=>user.name.toLowerCase().indexOf(q.toLowerCase())>=0);
     
@@ -20,27 +16,23 @@ router.get('/search',(req,res) => {
         question:q
     });
 
-});
+}
 
-router.get('/create',(req,res)=>{
-    res.render('/create');
+export const getCreate=(req,res)=>{
+    res.render('users/create');
     
-});
-
-router.post('/create',(req,res)=>{
+}
+export const postCreate=(req,res)=>{
     req.body.id=shortId.generate();
 db.get('users').push(req.body).write();
-    res.redirect('');
-});
+    res.redirect('/users');
+}
 
-router.get('/:id',(req,res)=>{
+export const getId=(req,res)=>{
 
     var id =req.params.id ;
     var user=db.get('users').find({id:id}).value();
     res.render('users/view',{
         user:user
     });
-});
-
-//module.exports=router;
-export default router;
+}
