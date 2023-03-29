@@ -2,63 +2,42 @@
   "users": [
     {
       "name": "trongdat",
-      "id": "h-f3GaGy1"
-    },
-    {
-      "name": "huynhdat",
-      "id": "9JCqZMTF8"
-    },
-    {
-      "name": "dath",
-      "id": "N1SQxLfOp"
-    },
-    {
-      "name": "h;tdat",
-      "id": "TzVzTrtub"
+      "phone": "0355754504",
+      "id": "W-zFbOVor",
+      "email": "trongdat@gmail.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e"
     },
     {
       "name": "hltdat",
-      "id": "sk4opfqpS"
-    },
-    {
-      "name": "trongdathl",
-      "id": "1BoeKQJmh"
-    },
-    {
-      "name": "tdat",
-      "id": "S_xe8OPyX"
-    },
-    {
-      "name": "td",
-      "id": "q5Av_ulz2"
-    },
-    {
-      "name": "tdath",
-      "id": "G5VLiMIif"
-    },
-    {
-      "name": "tdathl",
-      "id": "F-5DtlYe7"
-    },
-    {
-      "name": "abc",
-      "id": "9qiTDJERU"
-    },
-    {
-      "name": "dathlt",
-      "id": "7doFRocYe"
+      "phone": "1335",
+      "id": "RHiM3ft30",
+      "email": "trongdat2002@gmail.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e"
     },
     {
       "name": "dath",
-      "id": "Dtr-mP0Qn"
+      "phone": "123456789",
+      "id": "K53NtKvm8"
     },
     {
-      "name": "huynhluongtrongdat",
-      "id": "F0dv28oPX"
+      "name": "abc",
+      "phone": "123",
+      "id": "rdyUMjpos"
     },
     {
-      "name": "Huỳnh Lương Trọng Đạt",
-      "id": "YvYondBfw"
+      "name": "dat",
+      "phone": "0123456789",
+      "id": "TmWjBAeQr"
+    },
+    {
+      "name": "dathlt",
+      "phone": "0355754504",
+      "id": "M2XLkHbT7"
+    },
+    {
+      "name": "trdat",
+      "phone": "0123456789",
+      "id": "DzmRABe_N"
     }
   ]
 }

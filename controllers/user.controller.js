@@ -1,6 +1,8 @@
 import db from '../db.js';
 import shortId from 'shortid'
 
+
+
 export const index=(request, response)=>{
     response.render('users/index',{
         users:db.get('users').value()
@@ -19,12 +21,13 @@ export const search=(req,res) => {
 }
 
 export const getCreate=(req,res)=>{
+    console.log(req.cookies);
     res.render('users/create');
     
 }
 export const postCreate=(req,res)=>{
     req.body.id=shortId.generate();
-db.get('users').push(req.body).write();
+    db.get('users').push(req.body).write();
     res.redirect('/users');
 }
 
