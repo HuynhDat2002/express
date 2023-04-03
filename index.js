@@ -1,13 +1,17 @@
 
+import * as dotenv from 'dotenv';
+dotenv.config(); // .env
 
 import express from 'express';
 const app = express();
 
-import {default as useRouter} from './routes/user.js';
-import {default as authRouter} from './routes/auth.route.js';
-import cookieParser from 'cookie-parser';
+import {default as userRouter} from './routes/user.js'; // router
+import {default as authRouter} from './routes/auth.route.js'; // router
+import {default as productRouter} from './routes/product.route.js'; // router
 
-import * as authMiddleware from './middleware/auth.middleware.js'
+import cookieParser from 'cookie-parser'; // to use cookie
+
+import * as authMiddleware from './middleware/auth.middleware.js' //condition
 
 // Set some defaults
 
@@ -18,7 +22,7 @@ app.set('views', './views');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
-app.use(cookieParser());
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 const port=3000;
 app.get('/',(request, response) => {
@@ -26,7 +30,7 @@ app.get('/',(request, response) => {
 } );
 
 app.use('/auth',authRouter);
-app.use('/users',authMiddleware.requireAuth,useRouter);
-
+app.use('/users',authMiddleware.requireAuth,userRouter);
+app.use('/products',productRouter);
 
 app.listen(3000,()=>{console.log('listening on port '+port);});

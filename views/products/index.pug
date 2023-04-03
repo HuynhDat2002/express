@@ -1,0 +1,59 @@
+extends ../layouts/common.pug
+block content
+    style.
+        *{
+            padding:0;
+            margin:0;
+        }
+        .headline{
+            text-transform:uppercase;
+            padding:10px 20px;
+            text-align:center;
+            
+        }
+        ul.products{
+            display:flex;
+            flex-wrap: wrap;
+            justify-content:space-between;
+        }
+        ul.products li{
+            flex-basis:25%;
+            padding:10px;
+        }
+        ul.products li img{
+            max-width:100%;
+            height:auto;
+            
+        }
+    #wrapper
+        h1.headline Products
+        .d-flex.justify-content-end       
+            form.ms-auto(action="/users/search", method='GET',class="d-flex") 
+                input(type="search" name="q" placeholder="typing..." value=question,class="form-control")
+                button(type="submit",class="btn btn-primary ms-2") Search
+        ul.products 
+            each product in products
+                li 
+                    .product-item
+                        .product-top
+                            a.product-thumb(href="") 
+                                img(src=product.image, alt="")
+                        .product-info 
+                            h3=product.name
+                            p=product.description
+                        .addToCart 
+                            a.btn.btn-primary(href="") Add to cart
+        nav(aria-label='...')
+            ul.pagination
+                li.page-item.disabled
+                a.page-link Previous
+                li.page-item
+                a.page-link(href='/products?page=1') 1
+                li.page-item.active(aria-current='page')
+                a.page-link(href='/products?page=2') 2
+                li.page-item
+                a.page-link(href='#') 3
+                li.page-item
+                a.page-link(href='#') Next
+
+    

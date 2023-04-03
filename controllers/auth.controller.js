@@ -31,7 +31,7 @@ export const postLogin=(request, response)=>{
     }
    
 
-    response.cookie('userId',user.id);
+    response.cookie('userId',user.id,{signed:true});
     response.redirect('/users');
     
     

@@ -1,11 +1,15 @@
 
 import express from 'express';
-const router = express.Router();
+import multer from 'multer';
+
 
 //import db from '../db.js'
 import * as controller from '../controllers/user.controller.js';
 import * as validate from '../validate/user.validate.js'
 import * as authMiddleware from '../middleware/auth.middleware.js'
+
+const router = express.Router();
+const upload = multer({ dest: 'uploads/' })
 
 router.get('/',controller.index);
 router.get('/cookie',(req,res,next)=>{
