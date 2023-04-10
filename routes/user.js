@@ -9,7 +9,7 @@ import * as validate from '../validate/user.validate.js'
 import * as authMiddleware from '../middleware/auth.middleware.js'
 
 const router = express.Router();
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ dest: './public/uploads/' })
 
 router.get('/',controller.index);
 router.get('/cookie',(req,res,next)=>{
@@ -20,7 +20,11 @@ router.get('/search',controller.search);
 
 router.get('/create',controller.getCreate);
 
-router.post('/create',validate.postCreate,controller.postCreate);
+router.post('/create',
+        upload.single('avatar'),
+        validate.postCreate,
+        controller.postCreate
+);
 
 router.get('/:id',controller.getId);
 

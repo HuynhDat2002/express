@@ -27,6 +27,7 @@ export const getCreate=(req,res)=>{
 }
 export const postCreate=(req,res)=>{
     req.body.id=shortId.generate();
+    req.body.avatar=req.file.path.split('/').slice(1).join('/');
     db.get('users').push(req.body).write();
     res.redirect('/users');
 }

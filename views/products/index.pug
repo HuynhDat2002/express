@@ -42,7 +42,7 @@ block content
                             h3=product.name
                             p=product.description
                         .addToCart 
-                            a.btn.btn-primary(href="") Add to cart
+                            a.btn.btn-primary(href="/cart/add/"+product.id) Add to cart
         nav(aria-label='...')
             ul.pagination
                 li.page-item.disabled
