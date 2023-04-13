@@ -14,11 +14,11 @@ block content
             th Name 
             th  Phone 
             th Action
-        each u in users 
+        each user in users 
             tr 
                 td 
-                    img(src=u.avatar, width="64")
-                td=u.name
-                td=u.phone
+                    img(src=user.avatar, width="64")
+                td=user.name
+                td=user.phone
                 td
-                    a(href="/users/"+u.id) View
+                    a(href="/users/"+user.id) View
