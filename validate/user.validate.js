@@ -1,4 +1,4 @@
-export const postCreate=(req,res,next) => {
+export const postCreate= (req,res,next) => {
 
     let errors=[];
     if(!req.body.name) errors.push('Name do not be empty');
@@ -8,7 +8,10 @@ export const postCreate=(req,res,next) => {
     const {phone:phoneNumber}=req.body;
     if(!phoneRegex.test(phoneNumber)) errors.push('Phone Invalid');
     if(errors.length){
-        res.render('users/create',{errors:errors,values:req.body});
+        res.render('users/create',{
+            errors:errors,
+            values:req.body
+        });
         return; 
     }
     next();

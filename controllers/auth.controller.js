@@ -1,14 +1,23 @@
-import db from '../db.js';
-import md5 from 'md5';
+//import db from '../db.js';
+//import md5 from 'md5';
+import connection from "../connectionDB.js";
+
 
 export const login=(request, response)=>{
     response.render('auth/login');
 };
 
-export const postLogin=(request, response)=>{
+export const postLogin=async (request, response)=>{
     var email = request.body.email;
     var password=request.body.password;
-    var user=db.get('users').find({email: email}).value();
+    //var user=db.get('users').find({email: email}).value();
+
+    async function getUser(){
+        const [row]=await connection.query(`SELECT * FROM users WHERE email = ?`,[email]);
+        return row[0];
+    }
+    const user = await getUser();
+
     if(!user){
         response.render('auth/login',{
             errors: [
@@ -19,13 +28,14 @@ export const postLogin=(request, response)=>{
         return;
     }
 
-    var hashPassword=md5(password);
-    if(user.password!== hashPassword){
+    //var hashPassword=md5(password);
+    if(user.password!== password){
         response.render('auth/login',{
             errors: [
                 'Wrong password',
             ],
-            values:request.body
+            values:request.body,
+        
         });
         return;    
     }
